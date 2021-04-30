@@ -1,0 +1,89 @@
+import random
+import time
+
+
+def DisplayCurrentState():
+    for i in currentState:
+        print(i + '', end='')
+
+    print('\n')
+
+
+def UpdateState(userLetter):
+    for i in range(len(currentState)):
+        if wordlist[i] == userLetter:
+            currentState[i] = userLetter
+
+
+def GameOver():
+    global wordGuessed
+
+    if wordlist == currentState:
+        wordGuessed = True
+    elif wordlist == currentState:
+        wordGuessed = False
+
+
+def DisplayHangman(count):
+    if count == 1:
+        print(" Wrong input " + str(limit - count) + " attempts remaining ")
+
+    elif count == 2:
+        print(" Wrong input " + str(limit - count) + " attempts remaining ")
+
+    elif count == 3:
+        print(" Wrong input " + str(limit - count) + " attempts remaining ")
+
+        GameOver()
+        print("Sorry You Lost !")
+
+
+count = 0
+listOfwords = ['bad', 'perfect', 'hello', 'what', 'test', 'awesome']
+word = random.choice(listOfwords)
+
+wordlist = list(word)
+currentState = ['_'] * len(wordlist)
+
+wordGuessed = False
+
+name = input("what is your name : ")
+time.sleep(2)
+print("Welcome " + name + " Enjoy ")
+time.sleep(2)
+print("\n")
+
+while not wordGuessed:
+    limit = 3
+    DisplayCurrentState()
+    userLetter = input('Guess a Letter : ')
+    print()
+
+    if userLetter in wordlist:
+        if userLetter in currentState:
+            print('You already guessed this later')
+        else:
+            UpdateState(userLetter)
+    else:
+        count += 1
+        if count == 1:
+            DisplayHangman(count)
+            print("\n")
+            print('Try again')
+
+        elif count == 2:
+            DisplayHangman(count)
+            print("\n")
+            print('Try again')
+
+        elif count == 3:
+            DisplayHangman(count)
+            print("\n")
+            print('Try again')
+
+    GameOver()
+
+DisplayCurrentState()
+print('\n')
+print('The word was' + word)
+print('Thanks for playing')

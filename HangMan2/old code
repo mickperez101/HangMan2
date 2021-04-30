@@ -1,0 +1,24 @@
+limit = 3
+    if userLetter in wordlist:
+        if userLetter in currentState:
+            print('You already guessed this later')
+        else:
+            UpdateState(userLetter)
+    else:
+            count =+ 1
+
+    #if count == 0:
+        #DisplayCurrentState(
+
+# file = open("words", "r")
+# listOfwords = []
+# for line in file:
+# stripped_line = line.strip()
+# line_list = stripped_line.split()
+# listOfwords.append(line_list)
+
+# file.close()
+
+#listOfwords = ['bad', 'perfect', 'hello', 'what', 'test', 'awesome']
+
+#word = random.choice(listOfwords)
